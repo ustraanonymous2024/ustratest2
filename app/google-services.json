@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "301076088054",
+    "project_id": "ustramerchant",
+    "storage_bucket": "ustramerchant.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301076088054:android:e1ae86ff74848105add8d7",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgye2s68OGwe4Okr3RDmjKp-GmG5VvfSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
