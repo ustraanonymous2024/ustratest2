@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="ustra_merchant">USTRA MERCHANT</string>
+    <string name="submit">submit</string>
+    <string name="enter_name_please">Enter Name please</string>
+    <string name="get_online">Get online</string>
+    <string name="get_offline">Get offLine</string>
 </resources>
