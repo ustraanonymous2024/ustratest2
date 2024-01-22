@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,7 @@ class NetworkUtils {
 public class dashbord extends AppCompatActivity {
     Button butub,
      butub2;
+    EditText mobno1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -40,10 +42,11 @@ public class dashbord extends AppCompatActivity {
         setContentView(R.layout.activity_dashbord);
         butub = findViewById(R.id.butub);
         butub2 = findViewById(R.id.butub2);
+        mobno1 = findViewById(R.id.mob_no);
 
         butub.setOnClickListener(v -> onCreate());
 
-        butub2.setOnClickListener(v -> onCreate2());
+      //  butub2.setOnClickListener(v -> onCreate2());
 
 
 
@@ -51,11 +54,11 @@ public class dashbord extends AppCompatActivity {
 
 }
 
-    private void onCreate2() {
+   /* private void onCreate2() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("https://console.firebase.google.com/u/0/project/ustramerchant/database/ustramerchant-default-rtdb/data/~2F");
         myRef.removeValue();
-    }
+    }-*/
 
     private void onCreate() {
 
@@ -65,13 +68,13 @@ public class dashbord extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("internet_status");
 
         if (NetworkUtils.isNetworkAvailable(this)) {
-            databaseReference.setValue("Online");
+            databaseReference.setValue( mobno1+"Online");
             Toast.makeText(dashbord.this,"You are Online now ",Toast.LENGTH_SHORT).show();
 
         } else {
             databaseReference.setValue("Offline");
             Toast.makeText(dashbord.this,"Please Check Internet Connection ",Toast.LENGTH_SHORT).show();
-//agcfgcfgfvxdkhgsdlghss
+//agcfgcfgfvxdkhgsdlghsssd
         }
     }
 }
