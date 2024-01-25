@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                     otpbtn.setVisibility(View.INVISIBLE);
                                     Intent intent = new Intent(getApplicationContext(),MainActivity2.class);
                                     intent.putExtra("otp_fire",otp_fire);
+                                    intent.putExtra("Ph_no",mobno.getText().toString());
                                     startActivity(intent);
                                     Toast.makeText(MainActivity.this,"OTP sent sucessfully",Toast.LENGTH_SHORT).show();
 

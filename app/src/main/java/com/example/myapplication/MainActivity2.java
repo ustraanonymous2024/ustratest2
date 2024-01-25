@@ -18,6 +18,7 @@ public class MainActivity2 extends AppCompatActivity {
     EditText otptext ;
     Button submitbtn;
     String getotp_fire;
+    String Ph_no;
 
 
     @Override
@@ -30,6 +31,7 @@ public class MainActivity2 extends AppCompatActivity {
         ProgressBar proges = findViewById(R.id.progressBar2);
 
          getotp_fire = getIntent().getStringExtra("otp_fire");
+        Ph_no = getIntent().getStringExtra("Ph_no");
 
 
 
@@ -51,6 +53,8 @@ public class MainActivity2 extends AppCompatActivity {
                                 submitbtn.setVisibility(View.VISIBLE);
                                 if(task.isSuccessful()){
                                     Intent intent= new Intent(getApplicationContext(),dashbord.class);
+                                    intent.putExtra("Ph_no",Ph_no);
+
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
 
