@@ -5,4 +5,10 @@
     <string name="enter_name_please">Enter Name please</string>
     <string name="get_online">Get online</string>
     <string name="get_offline">Get offLine</string>
+    <string name="adhar_card">Adhar Card</string>
+    <string name="pan_card">PAN Card</string>
+    <string name="seat_capacity">Seat Capacity</string>
+    <string name="name">Name</string>
+    <string name="saloon_name">Saloon Name</string>
+    <string name="register">Register</string>
 </resources>
