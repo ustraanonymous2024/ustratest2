@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -13,17 +15,22 @@ import com.google.firebase.database.FirebaseDatabase;
 public class dashbord extends AppCompatActivity {
    @SuppressLint("UseSwitchCompatOrMaterialCode")
    Switch switch1;
+   Button button;
 
     String phone;
 
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashbord);
 
         switch1 =findViewById(R.id.switch1);
+        button =findViewById(R.id.button);
+
+
 
 
         phone = getIntent().getStringExtra("Ph_no");
@@ -36,6 +43,11 @@ public class dashbord extends AppCompatActivity {
             else {
                 disableFeature();
             }
+        });
+        button.setOnClickListener(v->{
+            Intent intent = new Intent(dashbord.this,registration.class);
+            startActivity(intent);
+
         });
 
 

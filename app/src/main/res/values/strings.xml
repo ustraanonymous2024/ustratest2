@@ -12,4 +12,7 @@
     <string name="saloon_name">Saloon Name</string>
     <string name="register">Register</string>
     <string name="verify_location">Verify Location</string>
+    <string name="todo">TODO</string>
+    <string name="_91">+91</string>
+    <string name="we_will_send_you_an_otp_in_this_given_mobile_number">We will send you an OTP in this given mobile number</string>
 </resources>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,6 +37,16 @@ public class registration extends AppCompatActivity {
     private static final String Seat0 = "Seat2";
     private static final String Acard0 = "Acard2";
     private static final String Pcard0 = "Pcard2";
+    private static final String lattiude0 = "Lattiude";
+    private static final String longitude0 = "Longitude";
+    private static final String  addline0 = "Line Address";
+    private static final String   city0 = "City";
+    private static final String  country0 = "Country";
+
+    //addline
+
+
+
 
 
 
@@ -45,9 +56,8 @@ public class registration extends AppCompatActivity {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final static int REQUEST_CODE = 100;
-    double lattiude,longitude;
+    String lattiude,longitude;
     String addline ,city,country;
-
 
 
 
@@ -62,6 +72,7 @@ public class registration extends AppCompatActivity {
         Acard1= findViewById(R.id.Acard);
         Pcard1 = findViewById(R.id.Pcard);
         register1 = findViewById(R.id.register);
+
         //locationa ka kaam
         locationbtn = findViewById(R.id.locationbtn);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -74,7 +85,8 @@ public class registration extends AppCompatActivity {
 
     }
 
-    private void onCreate2() {
+
+    void onCreate2() {
         //yeh loaction wala hai
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             fusedLocationProviderClient.getLastLocation().addOnSuccessListener(location -> {
@@ -85,13 +97,14 @@ public class registration extends AppCompatActivity {
                         try {
                             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
                             assert addresses != null;
-                            lattiude = addresses.get(0).getLatitude();
-                             longitude = addresses.get(0).getLongitude();
+                           double lattiudeD = addresses.get(0).getLatitude();
+                            double longitudeD = addresses.get(0).getLongitude();
                              addline = addresses.get(0).getAddressLine(0);
                              city = addresses.get(0).getLocality();
                              country = addresses.get(0).getCountryName();
 
-
+                            lattiude = String.valueOf(lattiudeD);
+                            longitude  = String.valueOf(longitudeD);
 
 
 
@@ -112,7 +125,7 @@ public class registration extends AppCompatActivity {
 
     }
 
-    private void askPermission() {
+     void askPermission() {
         ActivityCompat.requestPermissions(registration.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
     }
 
@@ -128,41 +141,64 @@ public class registration extends AppCompatActivity {
         }
     }
 
-    private void onCreate() {
-        // EditText ko variable meh store kraya hu
-        String  Name = name1.getText().toString();
-        String  Saloon_Name = saloonName1.getText().toString();
-        String  Seat = Seat1.getText().toString();
-        String  Adhar_card = Acard1.getText().toString();
-        String  PAN_card = Pcard1.getText().toString();
+     void onCreate() {
+         // EditText ko variable meh store kraya hu
+         String Name = name1.getText().toString();
+         String Saloon_Name = saloonName1.getText().toString();
+         String Seat = Seat1.getText().toString();
+         String Adhar_card = Acard1.getText().toString();
+         String PAN_card = Pcard1.getText().toString();
 //yah pe hash map ka use kiya hu
-        Map<String,Object> vat = new HashMap<>();
-        vat.put(name0,Name);
-        vat.put(saloon_Name0,Saloon_Name);
-        vat.put(Seat0,Seat);
-        vat.put(Acard0,Adhar_card);
-        vat.put(Pcard0,PAN_card);
-
-
-
+         Map<String, Object> vat = new HashMap<>();
+         vat.put(name0, Name);
+         vat.put(saloon_Name0, Saloon_Name);
+         vat.put(Seat0, Seat);
+         vat.put(Acard0, Adhar_card);
+         vat.put(Pcard0, PAN_card);
+         vat.put(addline0, addline);
+         vat.put(city0, city);
+         vat.put(country0, country);
 
 
 //yah pe saloon ke naam se data base banaya hu
-        String uniqueCollectionId = generateUniqueCollectionId();
-        CollectionReference uniqueCollectionRef = db.collection(uniqueCollectionId);
-
-        uniqueCollectionRef.add(vat)
-                .addOnSuccessListener(unused -> Toast.makeText(registration.this, "sucessful", Toast.LENGTH_SHORT).show())
-                .addOnFailureListener(e -> {
-                    Toast.makeText(registration.this, e.toString(), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG,e.toString() );
+         String uniqueCollectionId = generateUniqueCollectionId();
+         CollectionReference uniqueCollectionRef = db.collection(uniqueCollectionId);
 
 
-                });
-    }
+         uniqueCollectionRef.document("Personal detail").set(vat)
+                 .addOnSuccessListener(unused -> Toast.makeText(registration.this, "sucessful", Toast.LENGTH_SHORT).show())
+                 .addOnFailureListener(e -> {
+                     Toast.makeText(registration.this, e.toString(), Toast.LENGTH_SHORT).show();
+                     Log.d(TAG, e.toString());
 
-    private String generateUniqueCollectionId() {
-        return saloonName1.getText().toString() ;
+
+                 });
+         Map<String, Object> data2 = new HashMap<>();
+         data2.put(longitude0, longitude);
+         uniqueCollectionRef.document("Longitude")
+                 .set(data2)
+                 .addOnSuccessListener(documentReference3 -> Log.d("Firestore", "Document 2added with ID: " + longitude0))
+                 .addOnFailureListener(e2 -> {
+                     // Handle errors for document 2
+                     Log.e("Firestore", "Error adding document 2", e2);
+                 });
+
+         Map<String, Object> data1 = new HashMap<>();
+         data1.put(lattiude0, lattiude);
+         uniqueCollectionRef.document("lattitude")
+                 .set(data1)
+                 .addOnSuccessListener(documentReference2 -> Log.d("Firestore", "Document 2 added with ID: " + lattiude0))
+                 .addOnFailureListener(e1 -> {
+                     // Handle errors for document 2
+                     Log.e("Firestore", "Error adding document 2", e1);
+                 });
+
+
+     }
+
+    String generateUniqueCollectionId() {
+        return saloonName1.getText().toString();
+
         //yeh saloon ke naam se genrate krne ka function hai
     }
 
