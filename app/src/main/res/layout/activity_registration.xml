@@ -6,21 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".registration">
 
-
-
-
-    <TextView
-        android:id="@+id/add"
-        android:layout_width="0dp"
-        android:layout_height="15dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.942" />
-
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="310dp"
@@ -58,8 +43,7 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/picon"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/picon" />
 
                 <EditText
                     android:id="@+id/name"
@@ -75,7 +59,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.283"
-                    tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+                    tools:ignore="Autofill,TextContrastCheck,TextFields" />
 
 
             </LinearLayout>
@@ -84,17 +68,17 @@
                 android:id="@+id/sname"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginLeft="5dp"
                 android:background="@drawable/shapes"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="  Surname"
+                android:layout_marginLeft="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.839"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.416"
-                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+                tools:ignore="Autofill,TextContrastCheck,TextFields" />
 
         </LinearLayout>
 
@@ -137,7 +121,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.55"
-                tools:ignore="TextFields,TouchTargetSizeCheck" />
+                tools:ignore="TextFields" />
         </LinearLayout>
 
 
@@ -188,17 +172,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.549"
-                    tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+                    tools:ignore="Autofill,TextContrastCheck,TextFields" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/locationbtn"
                 android:layout_width="141dp"
-                android:layout_height="48dp"
-                android:layout_margin="5dp"
+                android:layout_height="43dp"
                 android:background="@drawable/shaperound"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/verify_location"
+                android:layout_margin="5dp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -246,7 +230,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.695"
-                tools:ignore="Autofill,TextFields,TextContrastCheck,TouchTargetSizeCheck" />
+                tools:ignore="Autofill,TextFields,TextContrastCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -284,15 +268,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.797"
-                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
+                tools:ignore="Autofill,TextContrastCheck,TextFields" />
         </LinearLayout>
 
         <Button
             android:id="@+id/register"
             android:layout_width="165dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"
             android:background="@drawable/shaperound"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/register"
@@ -303,7 +285,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.879"
-            tools:ignore="TouchTargetSizeCheck" />
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"/>
 
 
     </LinearLayout>
