@@ -155,6 +155,10 @@ public class registration extends AppCompatActivity {
      void onCreate() {
 
         if(!name1.getText().toString().trim().isEmpty()&&!saloonName1.getText().toString().trim().isEmpty()&& !Seat1.getText().toString().trim().isEmpty() &&  !Acard1.getText().toString().trim().isEmpty()&& !Pcard1.getText().toString().trim().isEmpty() && !sname.getText().toString().trim().isEmpty() ) {
+            if (add.getText().toString().trim().isEmpty()) {
+                Toast.makeText(registration.this,"Please Verify the location",Toast.LENGTH_SHORT).show();
+
+
 
             // EditText ko variable meh store kraya hu
             String Name = name1.getText().toString() + " " + sname.getText().toString();
@@ -207,17 +211,13 @@ public class registration extends AppCompatActivity {
                     .addOnFailureListener(e1 -> {
                         // Handle errors for document 2
                         Log.e("Firestore", "Error adding document 2", e1);
-                    });
+                    });}
 
 
 
 
             register1.setEnabled(true);
-            } else if (add.getText().toString().trim().isEmpty()) {
-            Toast.makeText(registration.this,"Please Verify the location",Toast.LENGTH_SHORT).show();
-
-
-        } else{
+            }  else{
             Toast.makeText(registration.this,"Please fill the above detail",Toast.LENGTH_SHORT).show();
 
         }
