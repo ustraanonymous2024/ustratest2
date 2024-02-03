@@ -23,6 +23,7 @@ public class splashscrn extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             Intent spalsh = new Intent(splashscrn.this, registration.class);
             startActivity(spalsh);
+            finish();
         },2000);
 
 

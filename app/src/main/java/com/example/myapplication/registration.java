@@ -51,13 +51,15 @@ public class registration extends AppCompatActivity {
 
 
 
-    EditText name1 ,saloonName1,Seat1,Acard1,Pcard1;
+    EditText name1 ,saloonName1,Seat1,Acard1,Pcard1 ,sname;
     Button register1 , locationbtn;
+    TextView add;
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final static int REQUEST_CODE = 100;
     String lattiude,longitude;
-    String addline ,city,country;
+    String addline ,city,country ;
+
 
 
 
@@ -66,12 +68,15 @@ public class registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+
         name1 = findViewById(R.id.name);
         saloonName1 = findViewById(R.id.saloonName);
         Seat1 = findViewById(R.id.Seat);
         Acard1= findViewById(R.id.Acard);
         Pcard1 = findViewById(R.id.Pcard);
         register1 = findViewById(R.id.register);
+        sname = findViewById(R.id.sname);
+        add = findViewById(R.id.add);
 
         //locationa ka kaam
         locationbtn = findViewById(R.id.locationbtn);
@@ -80,8 +85,11 @@ public class registration extends AppCompatActivity {
 
 
 
-        register1.setOnClickListener(v-> onCreate());
+        register1.setOnClickListener(v -> onCreate());
         locationbtn.setOnClickListener(v-> onCreate2());
+
+
+
 
     }
 
@@ -105,6 +113,9 @@ public class registration extends AppCompatActivity {
 
                             lattiude = String.valueOf(lattiudeD);
                             longitude  = String.valueOf(longitudeD);
+                            add.setText(addline);
+                            Toast.makeText(registration.this,"Location Verification Completed",Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -142,59 +153,78 @@ public class registration extends AppCompatActivity {
     }
 
      void onCreate() {
-         // EditText ko variable meh store kraya hu
-         String Name = name1.getText().toString();
-         String Saloon_Name = saloonName1.getText().toString();
-         String Seat = Seat1.getText().toString();
-         String Adhar_card = Acard1.getText().toString();
-         String PAN_card = Pcard1.getText().toString();
+
+        if(!name1.getText().toString().trim().isEmpty()&&!saloonName1.getText().toString().trim().isEmpty()&& !Seat1.getText().toString().trim().isEmpty() &&  !Acard1.getText().toString().trim().isEmpty()&& !Pcard1.getText().toString().trim().isEmpty() && !sname.getText().toString().trim().isEmpty() ) {
+
+            // EditText ko variable meh store kraya hu
+            String Name = name1.getText().toString() + " " + sname.getText().toString();
+            String Saloon_Name = saloonName1.getText().toString();
+            String Seat = Seat1.getText().toString();
+            String Adhar_card = Acard1.getText().toString();
+            String PAN_card = Pcard1.getText().toString();
 //yah pe hash map ka use kiya hu
-         Map<String, Object> vat = new HashMap<>();
-         vat.put(name0, Name);
-         vat.put(saloon_Name0, Saloon_Name);
-         vat.put(Seat0, Seat);
-         vat.put(Acard0, Adhar_card);
-         vat.put(Pcard0, PAN_card);
-         vat.put(addline0, addline);
-         vat.put(city0, city);
-         vat.put(country0, country);
+            Map<String, Object> vat = new HashMap<>();
+            vat.put(name0, Name);
+            vat.put(saloon_Name0, Saloon_Name);
+            vat.put(Seat0, Seat);
+            vat.put(Acard0, Adhar_card);
+            vat.put(Pcard0, PAN_card);
+            vat.put(addline0, addline);
+            vat.put(city0, city);
+            vat.put(country0, country);
 
 
 //yah pe saloon ke naam se data base banaya hu
-         String uniqueCollectionId = generateUniqueCollectionId();
-         CollectionReference uniqueCollectionRef = db.collection(uniqueCollectionId);
+            String uniqueCollectionId = generateUniqueCollectionId();
+            CollectionReference uniqueCollectionRef = db.collection(uniqueCollectionId);
 
 
-         uniqueCollectionRef.document("Personal detail").set(vat)
-                 .addOnSuccessListener(unused -> Toast.makeText(registration.this, "sucessful", Toast.LENGTH_SHORT).show())
-                 .addOnFailureListener(e -> {
-                     Toast.makeText(registration.this, e.toString(), Toast.LENGTH_SHORT).show();
-                     Log.d(TAG, e.toString());
+            uniqueCollectionRef.document("Personal detail").set(vat)
+                    .addOnSuccessListener(unused -> Toast.makeText(registration.this, "sucessful", Toast.LENGTH_SHORT).show())
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(registration.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        Log.d(TAG, e.toString());
 
 
-                 });
-         Map<String, Object> data2 = new HashMap<>();
-         data2.put(longitude0, longitude);
-         uniqueCollectionRef.document("Longitude")
-                 .set(data2)
-                 .addOnSuccessListener(documentReference3 -> Log.d("Firestore", "Document 2added with ID: " + longitude0))
-                 .addOnFailureListener(e2 -> {
-                     // Handle errors for document 2
-                     Log.e("Firestore", "Error adding document 2", e2);
-                 });
+                    });
+            Map<String, Object> data2 = new HashMap<>();
+            data2.put(longitude0, longitude);
+            uniqueCollectionRef.document("Longitude")
+                    .set(data2)
+                    .addOnSuccessListener(documentReference3 -> Log.d("Firestore", "Document 2added with ID: " + longitude0))
+                    .addOnFailureListener(e2 -> {
+                        // Handle errors for document 2
+                        Log.e("Firestore", "Error adding document 2", e2);
+                    });
 
-         Map<String, Object> data1 = new HashMap<>();
-         data1.put(lattiude0, lattiude);
-         uniqueCollectionRef.document("lattitude")
-                 .set(data1)
-                 .addOnSuccessListener(documentReference2 -> Log.d("Firestore", "Document 2 added with ID: " + lattiude0))
-                 .addOnFailureListener(e1 -> {
-                     // Handle errors for document 2
-                     Log.e("Firestore", "Error adding document 2", e1);
-                 });
+            Map<String, Object> data1 = new HashMap<>();
+            data1.put(lattiude0, lattiude);
+            uniqueCollectionRef.document("lattitude")
+                    .set(data1)
+                    .addOnSuccessListener(documentReference2 ->
+
+                            Log.d("Firestore", "Document 2 added with ID: " + lattiude0))
+                    .addOnFailureListener(e1 -> {
+                        // Handle errors for document 2
+                        Log.e("Firestore", "Error adding document 2", e1);
+                    });
 
 
-     }
+
+
+            register1.setEnabled(true);
+            } else if (add.getText().toString().trim().isEmpty()) {
+            Toast.makeText(registration.this,"Please Verify the location",Toast.LENGTH_SHORT).show();
+
+
+        } else{
+            Toast.makeText(registration.this,"Please fill the above detail",Toast.LENGTH_SHORT).show();
+
+        }
+        }
+
+
+
 
     String generateUniqueCollectionId() {
         return saloonName1.getText().toString();
