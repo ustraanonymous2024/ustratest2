@@ -240,7 +240,7 @@ public class registration extends AppCompatActivity {
 ///xdgxdgxgcfghxfc
 
     ///fuckk uuuu akshanttt
-
+///fuck sandesh at just 2.5
 
 
 
