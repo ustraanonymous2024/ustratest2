@@ -86,8 +86,8 @@ public class registration extends AppCompatActivity {
 
        register1.setOnClickListener(v -> {
            onCreate();
-           Intent intent = new Intent(registration.this, dashbord.class);
-           startActivity(intent);
+
+
        });
         locationbtn.setOnClickListener(v-> onCreate2());
 
@@ -217,6 +217,8 @@ public class registration extends AppCompatActivity {
                      // Handle errors for document 2
                      Log.e("Firestore", "Error adding document 2", e1);
                  });
+                 Intent intent = new Intent(registration.this, dashbord.class);
+                 startActivity(intent);
              }
              else {
                  Toast.makeText(registration.this, "Please Verify the Location", Toast.LENGTH_SHORT).show();
