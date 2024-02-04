@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -42,7 +43,7 @@ public class registration extends AppCompatActivity {
     private static final String   city0 = "City";
     private static final String  country0 = "Country";
     private static final String postalcode0 = "PIN Code";
-    //addline
+
 
 
 
@@ -83,7 +84,11 @@ public class registration extends AppCompatActivity {
 
 
 
-        register1.setOnClickListener(v-> onCreate());
+       register1.setOnClickListener(v -> {
+           onCreate();
+           Intent intent = new Intent(registration.this, dashbord.class);
+           startActivity(intent);
+       });
         locationbtn.setOnClickListener(v-> onCreate2());
 
     }

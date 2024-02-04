@@ -69,7 +69,7 @@ public class MainActivity2 extends AppCompatActivity {
                                 proges.setVisibility(View.GONE);
                                 submitbtn.setVisibility(View.VISIBLE);
                                 if(task.isSuccessful()){
-                                    Intent intent= new Intent(getApplicationContext(),dashbord.class);
+                                    Intent intent= new Intent(getApplicationContext(),registration.class);
                                     intent.putExtra("Ph_no",Ph_no);
 
                                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
