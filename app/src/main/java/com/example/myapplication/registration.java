@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,7 +41,7 @@ public class registration extends AppCompatActivity {
     private static final String  addline0 = "Line Address";
     private static final String   city0 = "City";
     private static final String  country0 = "Country";
-
+    private static final String postalcode0 = "PIN Code";
     //addline
 
 
@@ -56,8 +55,10 @@ public class registration extends AppCompatActivity {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final static int REQUEST_CODE = 100;
-    String lattiude,longitude;
-    String addline ,city,country;
+    String lattiude,longitude,postalcode;
+    String addline="",country ="";
+    String city = "";
+
 
 
 
@@ -72,6 +73,8 @@ public class registration extends AppCompatActivity {
         Acard1= findViewById(R.id.Acard);
         Pcard1 = findViewById(R.id.Pcard);
         register1 = findViewById(R.id.register);
+
+
 
         //locationa ka kaam
         locationbtn = findViewById(R.id.locationbtn);
@@ -99,12 +102,24 @@ public class registration extends AppCompatActivity {
                             assert addresses != null;
                            double lattiudeD = addresses.get(0).getLatitude();
                             double longitudeD = addresses.get(0).getLongitude();
+                            postalcode = addresses.get(0).getPostalCode();
                              addline = addresses.get(0).getAddressLine(0);
                              city = addresses.get(0).getLocality();
                              country = addresses.get(0).getCountryName();
 
                             lattiude = String.valueOf(lattiudeD);
                             longitude  = String.valueOf(longitudeD);
+
+
+                            if(!city.isEmpty()&&!country.isEmpty()){
+                                Toast.makeText(registration.this,"Location Fetch Successful",Toast.LENGTH_SHORT).show();
+
+                            }
+                            else{
+                                Toast.makeText(registration.this,"Location Fetch Fail",Toast.LENGTH_SHORT).show();
+                            }
+
+
 
 
 
@@ -142,6 +157,11 @@ public class registration extends AppCompatActivity {
     }
 
      void onCreate() {
+        if(!name1.getText().toString().trim().isEmpty()&&!saloonName1.getText().toString().trim().isEmpty()&&!Seat1.getText().toString().trim().isEmpty()&&!Acard1.getText().toString().trim().isEmpty()&&!Pcard1.getText().toString().trim().isEmpty()){
+             if(!city.isEmpty()){
+
+
+
          // EditText ko variable meh store kraya hu
          String Name = name1.getText().toString();
          String Saloon_Name = saloonName1.getText().toString();
@@ -158,7 +178,7 @@ public class registration extends AppCompatActivity {
          vat.put(addline0, addline);
          vat.put(city0, city);
          vat.put(country0, country);
-
+         vat.put(postalcode0,postalcode );
 
 //yah pe saloon ke naam se data base banaya hu
          String uniqueCollectionId = generateUniqueCollectionId();
@@ -166,7 +186,7 @@ public class registration extends AppCompatActivity {
 
 
          uniqueCollectionRef.document("Personal detail").set(vat)
-                 .addOnSuccessListener(unused -> Toast.makeText(registration.this, "sucessful", Toast.LENGTH_SHORT).show())
+                 .addOnSuccessListener(unused -> Toast.makeText(registration.this, "Registration Successful", Toast.LENGTH_SHORT).show())
                  .addOnFailureListener(e -> {
                      Toast.makeText(registration.this, e.toString(), Toast.LENGTH_SHORT).show();
                      Log.d(TAG, e.toString());
@@ -192,6 +212,15 @@ public class registration extends AppCompatActivity {
                      // Handle errors for document 2
                      Log.e("Firestore", "Error adding document 2", e1);
                  });
+             }
+             else {
+                 Toast.makeText(registration.this, "Please Verify the Location", Toast.LENGTH_SHORT).show();
+             }
+        }
+        else{
+            Toast.makeText(registration.this, "Please Fill Above Detail", Toast.LENGTH_SHORT).show();
+
+        }
 
 
      }

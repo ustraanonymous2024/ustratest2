@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".registration">
 
+
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="310dp"
@@ -43,7 +44,9 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/picon" />
+                    android:src="@drawable/picon"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
 
                 <EditText
                     android:id="@+id/name"
@@ -59,7 +62,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.283"
-                    tools:ignore="Autofill,TextContrastCheck,TextFields" />
+                    tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
 
 
             </LinearLayout>
@@ -68,17 +71,17 @@
                 android:id="@+id/sname"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
+                android:layout_marginLeft="5dp"
                 android:background="@drawable/shapes"
                 android:fontFamily="@font/roboto_medium"
                 android:hint="  Surname"
-                android:layout_marginLeft="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.839"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.416"
-                tools:ignore="Autofill,TextContrastCheck,TextFields" />
+                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -103,7 +106,8 @@
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/hicon" />
+                android:src="@drawable/hicon"
+                android:importantForAccessibility="no" />
 
             <EditText
                 android:id="@+id/saloonName"
@@ -121,7 +125,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.55"
-                tools:ignore="TextFields" />
+                tools:ignore="TextFields,TouchTargetSizeCheck" />
         </LinearLayout>
 
 
@@ -156,7 +160,8 @@
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="15dp"
-                    android:src="@drawable/sicon" />
+                    android:src="@drawable/sicon"
+                    tools:ignore="ContentDescription" />
 
                 <EditText
                     android:id="@+id/Seat"
@@ -172,24 +177,25 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.549"
-                    tools:ignore="Autofill,TextContrastCheck,TextFields" />
+                    tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/locationbtn"
                 android:layout_width="141dp"
                 android:layout_height="43dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/shaperound"
                 android:fontFamily="@font/roboto_medium"
                 android:text="@string/verify_location"
-                android:layout_margin="5dp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.208"
                 app:layout_constraintStart_toEndOf="@+id/linearLayout3"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.597" />
+                app:layout_constraintVertical_bias="0.597"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </LinearLayout>
 
@@ -214,7 +220,8 @@
                 android:layout_height="25dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/iicon" />
+                android:src="@drawable/iicon"
+                tools:ignore="ContentDescription" />
 
             <EditText
                 android:id="@+id/Acard"
@@ -230,7 +237,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.695"
-                tools:ignore="Autofill,TextFields,TextContrastCheck" />
+                tools:ignore="Autofill,TextFields,TextContrastCheck,TouchTargetSizeCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -268,13 +275,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.797"
-                tools:ignore="Autofill,TextContrastCheck,TextFields" />
+                tools:ignore="Autofill,TextContrastCheck,TextFields,TouchTargetSizeCheck" />
         </LinearLayout>
 
         <Button
             android:id="@+id/register"
             android:layout_width="165dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/shaperound"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/register"
@@ -285,8 +294,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.879"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="10dp"/>
+            tools:ignore="TouchTargetSizeCheck" />
 
 
     </LinearLayout>
