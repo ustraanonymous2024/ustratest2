@@ -235,7 +235,7 @@ public class registration extends AppCompatActivity {
 
         //yeh saloon ke naam se genrate krne ka function hai
     }
-
+///xdgxdgxgcfghxfc
 
 
 
